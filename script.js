@@ -12,13 +12,18 @@ const skills = [
 ];
 
 const projects = {
-  fullstack: [],
+  fullstack: [
+    {
+      title: 'StickBlitz Gaming Plateform',
+      desc: 'Multiplayer stickman gaming platform.',
+      tech: ['HTML','CSS','JS'],
+      liveUrl: 'https://riorahul9677.github.io/StickBlits-GamePltfrm/',
+      sourceUrl: 'https://github.com/Riorahul9677/StickBlits-GamePltfrm'
+    }
+  ],
   graphics: [
   ],
-  ai: [
-    {title: 'AI Music Composer', desc: 'Prompt-based film scoring background generator.', tech: ['NLP','Audio']},
-    {title: 'AI Chat Assistant (D.I.Y.A)', desc: 'Prototype chatbot interface.', tech: ['NLP','JS']}
-  ]
+  ai: []
 };
 
 // Render skills into two panels (technical and tools)
@@ -64,13 +69,15 @@ function renderProjects(tab){
   projects[tab].forEach((p, i)=>{
     const card = document.createElement('div');
     card.className = 'project-card';
+    const liveHref = p.liveUrl || '#';
+    const sourceHref = p.sourceUrl || 'https://github.com/Riorahul9677/Portfolio-DevaRahulN';
     card.innerHTML = `
       <h4>${p.title}</h4>
       <p>${p.desc}</p>
       <div class="badges">${p.tech.map(t=>`<span class="badge">${t}</span>`).join('')}</div>
       <div style="margin-top:10px;display:flex;gap:8px">
-        <a class="btn outline" href="#">Live Demo</a>
-        <a class="btn outline" href="#">Source Code</a>
+        <a class="btn outline" href="${liveHref}" target="_blank" rel="noopener">Live Demo</a>
+        <a class="btn outline" href="${sourceHref}" target="_blank" rel="noopener">Source Code</a>
       </div>
     `;
     grid.appendChild(card);
